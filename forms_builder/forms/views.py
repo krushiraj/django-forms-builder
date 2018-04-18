@@ -21,7 +21,7 @@ def form_detail(request, slug, template="forms/form_detail.html"):
     """
     published = Form.objects.published(for_user=request.user)
     form = get_object_or_404(published, slug=slug)
-    if form.login_required and not request.user.is_authenticated():
+    if form.login_required and not request.user.is_authenticated:
         return redirect("%s?%s=%s" % (settings.LOGIN_URL, REDIRECT_FIELD_NAME,
                         urlquote(request.get_full_path())))
     request_context = RequestContext(request)
